@@ -4,6 +4,29 @@
 
 using namespace std;
 
+//Fitting functions
+
+int bestFit(int blockSize[], int processSize[], int bs, int ps){
+
+}
+
+int worstFit(int blockSize[], int processSize[], int bs, int ps){
+
+}
+
+int firstFit(int blockSize[], int processSize[], int bs, int ps){
+
+}
+
+int nextFit(int blockSize[], int processSize[], int bs, int ps){
+
+}
+
+int buddyAllocation(int blockSize[], int processSize[], int bs, int ps){
+
+}
+
+//Main(): Driver code function
 int main(){
 
 //Input data for process and block size
@@ -52,31 +75,32 @@ switch(choice){
 	case 1:{
 		//Best Fit Approach
 		cout<<"Chosen strategy is Best fit!"<<endl;
-		for(int i=0;i<bs;i++){
-			if(processSize[i]>=dblock[i]){
-				result[i]=processSize[i];
-			}
-		}
+		bestFit(blockSize,processSize,bs,ps);
 	}
 
 	case 2:{
 		//Worst fit approach
+		cout<<"Chosen strategy is Best fit!"<<endl;
+		worstFit(blockSize,processSize,bs,ps);
 
 	}
 
 	case 3:{
 		//First Fit approach
-
+		cout<<"Chosen strategy is Best fit!"<<endl;
+		firstFit(blockSize,processSize,bs,ps);
 	}
 
 	case 4:{
 		//Next Fit Approach
-
+		cout<<"Chosen strategy is Best fit!"<<endl;
+		nextFit(blockSize,processSize,bs,ps);
 	}
 
 	case 5:{
 		//Buddy Allocation approach
-
+		cout<<"Chosen startegy is Buddy Allocation!"<<endl;
+		buddyAllocation(blockSize,processSize,bs,ps);
 	}
 
 	case 6:{
@@ -89,9 +113,6 @@ switch(choice){
 		goto A;
 	}
 }
-
-//Actual computation
-
 
 return 0;
 }
