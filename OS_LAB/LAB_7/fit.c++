@@ -5,25 +5,177 @@
 using namespace std;
 
 //Fitting functions
-
-int bestFit(int blockSize[], int processSize[], int bs, int ps){
-
+void bestFit(int blockSize[], int processSize[], int bs, int ps){
+	int allocation[ps]={0};
+	int temp[bs]={0};
+	int i=0,j=0;
+	for(i=0;i<ps;i++){
+		for(j=0;j<bs;j++){
+			if(blockSize[j]>=processSize[i]){
+				temp[j]=blockSize[j]-processSize[i];
+			}
+			else{
+				temp[j]=100000;
+			}
+		}
+		int min=100000;
+		int index=0;
+		for(j=0;j<bs;j++){
+			if(temp[j]<min){
+				min=temp[j];
+				index=j;
+			}
+		}
+		if(min==100000){
+			cout<<"Process("<<i<<") cannot be allocated memory!"<<endl;
+		}
+		else{
+			allocation[i]=index;
+			blockSize[index]=blockSize[index]-processSize[i];
+		}
+	}
+	cout<<"Process No.\tProcess Size\tBlock No.\tBlock Size"<<endl;
+	for(i=0;i<ps;i++){
+		cout<<i<<"\t\t"<<processSize[i]<<"\t\t"<<allocation[i]<<"\t\t"<<blockSize[allocation[i]]<<endl;
+	}
 }
 
-int worstFit(int blockSize[], int processSize[], int bs, int ps){
-
+void worstFit(int blockSize[], int processSize[], int bs, int ps){
+	int allocation[ps]={0};
+	int temp[bs]={0};
+	int i=0,j=0;
+	for(i=0;i<ps;i++){
+		for(j=0;j<bs;j++){
+			if(blockSize[j]>=processSize[i]){
+				temp[j]=blockSize[j]-processSize[i];
+			}
+			else{
+				temp[j]=100000;
+			}
+		}
+		int max=0;
+		int index=0;
+		for(j=0;j<bs;j++){
+			if(temp[j]>max){
+				max=temp[j];
+				index=j;
+			}
+		}
+		if(max==100000){
+			cout<<"Process("<<i<<") cannot be allocated memory!"<<endl;
+		}
+		else{
+			allocation[i]=index;
+			blockSize[index]=blockSize[index]-processSize[i];
+		}
+	}
+	cout<<"Process No.\tProcess Size\tBlock No.\tBlock Size"<<endl;
+	for(i=0;i<ps;i++){
+		cout<<i<<"\t\t"<<processSize[i]<<"\t\t"<<allocation[i]<<"\t\t"<<blockSize[allocation[i]]<<endl;
+	}
 }
 
-int firstFit(int blockSize[], int processSize[], int bs, int ps){
-
+void firstFit(int blockSize[], int processSize[], int bs, int ps){
+	int allocation[ps]={0};
+	int temp[bs]={0};
+	int i=0,j=0;
+	for(i=0;i<ps;i++){
+		for(j=0;j<bs;j++){
+			if(blockSize[j]>=processSize[i]){
+				temp[j]=blockSize[j]-processSize[i];
+			}
+			else{
+				temp[j]=100000;
+			}
+		}
+		int index=0;
+		for(j=0;j<bs;j++){
+			if(temp[j]!=100000){
+				index=j;
+				break;
+			}
+		}
+		if(temp[index]==100000){
+			cout<<"Process("<<i<<") cannot be allocated memory!"<<endl;
+		}
+		else{
+			allocation[i]=index;
+			blockSize[index]=blockSize[index]-processSize[i];
+		}
+	}
+	cout<<"Process No.\tProcess Size\tBlock No.\tBlock Size"<<endl;
+	for(i=0;i<ps;i++){
+		cout<<i<<"\t\t"<<processSize[i]<<"\t\t"<<allocation[i]<<"\t\t"<<blockSize[allocation[i]]<<endl;
+	}
 }
 
-int nextFit(int blockSize[], int processSize[], int bs, int ps){
-
+void nextFit(int blockSize[], int processSize[], int bs, int ps){
+	int allocation[ps]={0};
+	int temp[bs]={0};
+	int i=0,j=0;
+	int index=0;
+	for(i=0;i<ps;i++){
+		for(j=0;j<bs;j++){
+			if(blockSize[j]>=processSize[i]){
+				temp[j]=blockSize[j]-processSize[i];
+			}
+			else{
+				temp[j]=100000;
+			}
+		}
+		for(j=index;j<bs;j++){
+			if(temp[j]!=100000){
+				index=j;
+				break;
+			}
+		}
+		if(temp[index]==100000){
+			cout<<"Process("<<i<<") cannot be allocated memory!"<<endl;
+		}
+		else{
+			allocation[i]=index;
+			blockSize[index]=blockSize[index]-processSize[i];
+		}
+	}
+	cout<<"Process No.\tProcess Size\tBlock No.\tBlock Size"<<endl;
+	for(i=0;i<ps;i++){
+		cout<<i<<"\t\t"<<processSize[i]<<"\t\t"<<allocation[i]<<"\t\t"<<blockSize[allocation[i]]<<endl;
+	}
 }
 
-int buddyAllocation(int blockSize[], int processSize[], int bs, int ps){
-
+void buddyAllocation(int blockSize[], int processSize[], int bs, int ps){
+	int allocation[ps]={0};
+	int temp[bs]={0};
+	int i=0,j=0;
+	for(i=0;i<ps;i++){
+		for(j=0;j<bs;j++){
+			if(blockSize[j]>=processSize[i]){
+				temp[j]=blockSize[j]-processSize[i];
+			}
+			else{
+				temp[j]=100000;
+			}
+		}
+		int min=100000;
+		int index=0;
+		for(j=0;j<bs;j++){
+			if(temp[j]<min){
+				min=temp[j];
+				index=j;
+			}
+		}
+		if(min==100000){
+			cout<<"Process("<<i<<") cannot be allocated memory!"<<endl;
+		}
+		else{
+			allocation[i]=index;
+			blockSize[index]=blockSize[index]-processSize[i];
+		}
+	}
+	cout<<"Process No.\tProcess Size\tBlock No.\tBlock Size"<<endl;
+	for(i=0;i<ps;i++){
+		cout<<i<<"\t\t"<<processSize[i]<<"\t\t"<<allocation[i]<<"\t\t"<<blockSize[allocation[i]]<<endl;
+	}
 }
 
 //Main(): Driver code function
