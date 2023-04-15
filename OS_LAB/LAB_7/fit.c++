@@ -218,7 +218,7 @@ cin>>processSize[i];
 int choice=0;
 A:
 cout<<"Enter the strategy no. to be applied as per provided strategies below in menu:"<<endl;
-cout<<"1.) Best Fit \n"<<endl<<"2.) Worst Fit \n"<<"3.) First Fit \n"<<"4.) Next Fit\n"<<"5.) Buddy Allocation"<<"6.) Exit"<<endl;
+cout<<"1.) Best Fit \n"<<"2.) Worst Fit \n"<<"3.) First Fit \n"<<"4.) Next Fit\n"<<"5.) Buddy Allocation\n"<<"6.) Exit"<<endl;
 cin>>choice;
 
 cout<<"Proceeding with choosen strategy.. Now computing the fit size... \n";
@@ -228,31 +228,35 @@ switch(choice){
 		//Best Fit Approach
 		cout<<"Chosen strategy is Best fit!"<<endl;
 		bestFit(blockSize,processSize,bs,ps);
+		break;
 	}
 
 	case 2:{
 		//Worst fit approach
 		cout<<"Chosen strategy is Best fit!"<<endl;
 		worstFit(blockSize,processSize,bs,ps);
-
+		break;
 	}
 
 	case 3:{
 		//First Fit approach
 		cout<<"Chosen strategy is Best fit!"<<endl;
 		firstFit(blockSize,processSize,bs,ps);
+		break;
 	}
 
 	case 4:{
 		//Next Fit Approach
 		cout<<"Chosen strategy is Best fit!"<<endl;
 		nextFit(blockSize,processSize,bs,ps);
+		break;
 	}
 
 	case 5:{
 		//Buddy Allocation approach
 		cout<<"Chosen startegy is Buddy Allocation!"<<endl;
 		buddyAllocation(blockSize,processSize,bs,ps);
+		break;
 	}
 
 	case 6:{
